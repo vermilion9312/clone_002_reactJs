@@ -8,17 +8,25 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    const Title = (
-        <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
-            Hello I'm a title
-        </h3>
-            );
 
-    // const btn = React.createElement("button", {
-    //     onClick: () => console.log("I'm cliceckd")
-    // }, "Click me");
-    const container = React.createElement("div", null, [Title]);
-    ReactDOM.render(container, root);
+    let counter = 0;
+    function countUp() {
+        counter = counter + 1;
+        render();
+    }
+
+    function render() {
+        ReactDOM.render(<App />, root);
+    }
+
+    const App = () => (
+        <div>
+            <h3>Total clicks: {counter}</h3>
+            <button onClick={countUp}>Click me</button>
+        </div>
+        );
+
+    render();
 </script>
 
 </html>
